@@ -12,7 +12,7 @@ class GitHubSearchService {
     // Implementation based on: https://youtu.be/7O1UO5rEpRc
     // ReactiveConf 2018 - Brian Egan & Filip Hracek: Practical Rx with Flutter
     _results = _searchTerms
-        .debounce((_) => TimerStream(true, Duration(milliseconds: 250)))
+        .debounce((_) => TimerStream(true, Duration(milliseconds: 100)))
         .switchMap((query) async* {
       print('searching: $query');
       yield await apiWrapper.searchUser(query);
